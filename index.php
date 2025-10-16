@@ -1,5 +1,5 @@
 <?php
-
+ini_set('display_errors', E_ALL);
 session_start();
 
 require_once('config.php');

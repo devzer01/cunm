@@ -58,6 +58,8 @@ function getCuByCountry($country_id = 0, $fed_id = 0, $chap_id = 0, $cu_id = 0)
 function getLatestDataSheetByCuId($cu_ids)
 {
 	$dbo = getDbHandler();
+	$sth = $dbo->prepare("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+	$sth->execute();
 	$sql = "SELECT t1.id FROM pu_datasheet AS t1 WHERE t1.primary_union_id IN (" . implode(',', $cu_ids) . ") AND t1.date = (SELECT MAX(t2.date) FROM pu_datasheet AS t2 WHERE t2.primary_union_id = t1.primary_union_id AND t2.saved = 1) AND t1.saved = 1 GROUP BY t1.primary_union_id";
 	$sth = $dbo->prepare($sql);
 	$sth->execute();
@@ -67,6 +69,8 @@ function getLatestDataSheetByCuId($cu_ids)
 function getLatestDataSheetByCuIdByMonth($cu_ids, $month, $year)
 {
 	$dbo = getDbHandler();
+	$sth = $dbo->prepare("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+	$sth->execute();
 	$sql = "SELECT t1.id, t1.primary_union_id FROM pu_datasheet AS t1 WHERE t1.primary_union_id IN (" . implode(',', $cu_ids) . ") "
 		 . "     AND t1.date = (SELECT MAX(t2.date) FROM pu_datasheet AS t2 WHERE t2.primary_union_id = t1.primary_union_id AND MONTH(t2.date) = :month AND YEAR(t2.date) = :year AND t2.saved = 1) AND t1.saved = 1 GROUP BY t1.primary_union_id";
 	$sth = $dbo->prepare($sql);
@@ -131,6 +135,8 @@ function getMarketAggr($dids)
 function getReportData($dids)
 {
 	$db = getDbHandler();
+	$sth = $db->prepare("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+	$sth->execute();
 	$sql = "SELECT pug.area_id, pug.gender_id, SUM(pug.total) AS total, SUM(pug.male) AS male, SUM(pug.female) AS female, SUM(pum.farmer) AS farmer, 
 					SUM(pum.employee) AS employee, SUM(pum.microb) AS microb, "
 		. "         SUM(pua.group1) AS group1, SUM(pua.group2) AS group2, SUM(pua.group3) AS group3, SUM(pua.group4) AS group4, "
@@ -153,6 +159,8 @@ function getReportData($dids)
 function getPreviousDataSheetIds($cu_ids)
 {
 	$dbo = getDbHandler();
+	$sth = $dbo->prepare("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+	$sth->execute();
 	$sql = "SELECT t1.id FROM pu_datasheet AS t1 WHERE t1.primary_union_id IN (" . implode(',', $cu_ids) . ") AND t1.date = (SELECT MAX(t3.date) FROM pu_datasheet AS t3 WHERE t3.primary_union_id = t1.primary_union_id AND t3.date < (SELECT MAX(t2.date) FROM pu_datasheet AS t2 WHERE t2.primary_union_id = t1.primary_union_id)) GROUP BY t1.primary_union_id";
 	$sth = $dbo->prepare($sql);
 	$sth->execute();
@@ -162,6 +170,8 @@ function getPreviousDataSheetIds($cu_ids)
 function getPreviousDataSheetIdsByMonth($cu_ids, $month, $year)
 {
 	$dbo = getDbHandler();
+	$sth = $dbo->prepare("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+	$sth->execute();
 	$sql = "SELECT t1.id FROM pu_datasheet AS t1 WHERE t1.primary_union_id IN (" . implode(',', $cu_ids) . ") AND "
 		 . " t1.date = (SELECT MAX(t3.date) FROM pu_datasheet AS t3 WHERE t3.primary_union_id = t1.primary_union_id AND t3.date < "
 		 . " (SELECT MAX(t2.date) FROM pu_datasheet AS t2 WHERE t2.primary_union_id = t1.primary_union_id AND MONTH(t2.date) = :month AND YEAR(t2.date) = :year)) GROUP BY t1.primary_union_id";

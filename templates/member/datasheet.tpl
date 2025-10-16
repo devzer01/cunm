@@ -11,7 +11,7 @@
 	Please note that <strong>Date</strong> will always be default to <strong>25th</strong> regardless of the date you select<br/>
 	Please use the date field to only select correct <strong>month and year</strong>.
 </div>
-<form role="form" method='post' action='http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/datasheet'>
+<form role="form" method='post' action='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/datasheet'>
 Data Sheet Date: <input type="text" class="datepicker1" value="" id="date" name='date'>
 <button id='createsheet' type="submit" onclick="return validateDate();" class="btn btn-success">Create New Datasheet</button>
 </form>
@@ -47,7 +47,7 @@ Data Sheet Date: <input type="text" class="datepicker1" value="" id="date" name=
 		<tr>
 			<td>{$d.date}</td>
 			<td>{$d.total_members}</td>
-			<td><a href='http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/detail/{$d.id}'>View</a></td>
+			<td><a href='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/detail/{$d.id}'>View</a></td>
 		</tr>
 		{/foreach}
 		</tbody>
