@@ -4,7 +4,7 @@
 {include file='common/alert.tpl'}
 
 {if $op_area_set eq 0}
-	<div class="alert alert-danger">Please set a href='http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/operations'>Operational Areas</a> before creating datasheet</div>
+	<div class="alert alert-danger">Please set a href='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/operations'>Operational Areas</a> before creating datasheet</div>
 {/if}
 
 <div class="alert alert-info">

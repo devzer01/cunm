@@ -3,7 +3,7 @@
 
 {include file='common/alert.tpl'}
 
-<form role="form" method='post' action='http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/operations'>
+<form role="form" method='post' action='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/operations'>
 <div class="tab-pane" id="operations">
           <div class='panel panel-default'>
           	  <div class='panel-heading'>Operational Area (Select All That Apply)</div>

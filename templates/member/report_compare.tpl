@@ -11,7 +11,7 @@
   <li><a href="#incomestatment" data-toggle="tab">Income Statement</a></li>
   <li><a href="#pearls" data-toggle="tab">PEARLS</a></li>    
 </ul>
-<form role="form" method='post' action='http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/detail'>
+<form role="form" method='post' action='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/detail'>
 <div class="tab-content">
 
 	<div class="tab-pane" id="usage_services">

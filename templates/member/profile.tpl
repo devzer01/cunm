@@ -3,7 +3,7 @@
 
 {include file='common/alert.tpl'}
 
-<form role="form" method='post' action='http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/profile'>
+<form role="form" method='post' action='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/profile'>
 <div class="tab-content">
   <div class="tab-pane active" id="profile">
   	<div class="form-group">
@@ -77,7 +77,7 @@
           	var comment = $("#reason").val();
           	var that = $(this);
           
-          	$.post("http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/ajax/unlockp/{$primarycu.primary_union_id}", { comment: comment } , function () {
+          	$.post("//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/ajax/unlockp/{$primarycu.primary_union_id}", { comment: comment } , function () {
           		that.dialog( "close" );
           	});
         },

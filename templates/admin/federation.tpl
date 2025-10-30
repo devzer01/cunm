@@ -3,7 +3,7 @@
 
 {include file='common/alert.tpl'}
 
-<form role="form" method='post' action='http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/admin/federation'>
+<form role="form" method='post' action='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/admin/federation'>
   <div class="form-group">
     <label for="country">Country</label>
     <select id='country_id' name='country_id' class="form-control">

@@ -1134,7 +1134,9 @@ $app->group("/admin", function () use ($app, $smarty) {
 	$app->get("/country", function () use ($app, $smarty) {
 	
 		$db = getDbHandler();
-		$sql = "SELECT c.id, c.name, COUNT(*) AS fedcount FROM country AS c JOIN federation AS f ON f.country_id = c.id GROUP BY f.country_id ORDER BY c.name ";
+		$sth = $db->prepare("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+		$sth->execute();
+		$sql = "SELECT c.id, c.name, COUNT(*) AS fedcount FROM country AS c LEFT JOIN federation AS f ON f.country_id = c.id GROUP BY f.country_id ORDER BY c.name ";
 		$sth = $db->prepare($sql);
 		$sth->execute();
 		$countries = $sth->fetchAll();

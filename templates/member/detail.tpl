@@ -13,7 +13,7 @@
   <li><a href="#usage_services" data-toggle="tab">Usage of Services</a></li>
 </ul>
 
-<form role="form" method='post' action='http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/detail'>
+<form role="form" method='post' action='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/member/detail'>
 <input type='hidden' name='dsid' value='{$pid}' />
 <div class="tab-content datasheet">
   <div class="tab-pane active" id="area_market">
@@ -462,7 +462,7 @@
           		return false;
           	}
           
-          	$.post("http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/ajax/unlock/{$ds.id}", { comment: comment } , function () {
+          	$.post("//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/ajax/unlock/{$ds.id}", { comment: comment } , function () {
           		that.dialog( "close" );
           	});
         },

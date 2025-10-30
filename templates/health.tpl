@@ -48,7 +48,7 @@ Period: <input class='datepicker' type='text' id='day_start_date' name='start_da
 		    	e.preventDefault();
 		    	var startDate = $("#day_start_date").val();
 		    	var endDate = $("#day_end_date").val();
-		    	window.location.href = 'http://' + host + '/bot/op/health/' + startDate + '/' + endDate
+		    	window.location.href = '//' + host + '/bot/op/health/' + startDate + '/' + endDate
 		    });
 	});
 {/literal}

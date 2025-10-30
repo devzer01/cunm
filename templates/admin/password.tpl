@@ -37,7 +37,7 @@
 			e.preventDefault();
 			var formdata = $("#formgroup").serialize();
 			$.ajax({
-				url: 'http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/ajax/bsgroup',
+				url: '//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/ajax/bsgroup',
 				data: formdata,
 				type: 'post',
 				dataType: 'json',
@@ -56,7 +56,7 @@
 			e.preventDefault();
 			var formdata = $("#formsubgroup").serialize();
 			$.ajax({
-				url: 'http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/ajax/bssubgroup',
+				url: '//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/ajax/bssubgroup',
 				data: formdata,
 				type: 'post',
 				dataType: 'json',
@@ -75,7 +75,7 @@
 			var group_id = $(this).val();
 			
 			$.ajax({
-				url: 'http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/ajax/bssubgroup/' + group_id,
+				url: '//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/ajax/bssubgroup/' + group_id,
 				type: 'get',
 				dataType: 'json',
 				success: function (json) {
@@ -94,7 +94,7 @@
 			var country_id = $(this).val();
 			
 			$.ajax({
-				url: 'http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/ajax/federations/' + country_id,
+				url: '//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/ajax/federations/' + country_id,
 				type: 'get',
 				dataType: 'json',
 				success: function (json) {

@@ -3,7 +3,7 @@
 
 {include file='common/alert.tpl'}
 
-<form role="form" method='post' action='http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/admin/service'>
+<form role="form" method='post' action='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/admin/service'>
   <div class="form-group">
     <label for="exampleInputEmail1">Product or Services</label>
     <input type="text" name='name' class="form-control" id="exampleInputEmail1" placeholder="Enter Product or Services">

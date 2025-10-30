@@ -32,7 +32,7 @@ function. The user groups in the program follow:</p>
 <h3>CUNM User Diagram:</h3>
 <p>Based on the details and permission of each user group above, the diagram of the platform based on each user’s permission is illustrated below:</p>
 
-<IMG SRC="http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/images/chart.png">
+<IMG SRC="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/images/chart.png">
 
 <h3>Platform</h3>
 <p>The platform is a web-based platform that allows all the users be able to access the data and information store in the database of the platform from anywhere using the Internet connection. </p>

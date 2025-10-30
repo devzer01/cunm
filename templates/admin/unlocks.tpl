@@ -34,7 +34,7 @@
 		$(".unlock").click(function (e) {
 			var that = $(this);
 			var id = $(this).data('id');
-			$.post('http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/admin/unlock', { id: id}, function () {
+			$.post('//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/admin/unlock', { id: id}, function () {
 				that.parent().parent().remove();
 			}); 
 		});

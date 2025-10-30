@@ -3,7 +3,7 @@
 
 {include file='common/alert.tpl'}
 
-<form role="form" method='post' action='http://{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/federation/chapter'>
+<form role="form" method='post' action='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/federation/chapter'>
   <div class="form-group">
     <label for="exampleInputEmail1">Region/Chapter Name</label>
     <input type="text" name='name' class="form-control" id="exampleInputEmail1" placeholder="Enter Primary Region/Chapter Name">
