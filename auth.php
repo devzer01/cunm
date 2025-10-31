@@ -2,6 +2,8 @@
 require_once 'vendor/autoload.php';
 require_once 'vendor/spipu/html2pdf/html2pdf.class.php';
 
+$smarty->assign("user_federation_id", $_SESSION["user_federation_id"]);
+
 $app->get("/mandashboard", function () use ($app, $smarty) {
 	$smarty->display('mandashboard.tpl');
 });
@@ -327,7 +329,7 @@ $app->group("/federation", function () use ($app, $smarty) {
                     major_challenges = :major_challenges,
                     opportunities = :opportunities,
                     updated_at = NOW()
-                    WHERE id = :profile_id AND federation_id = :federation_id";
+                    WHERE profile_id = :profile_id AND federation_id = :federation_id";
 
                 $sth = $db->prepare($sql);
                 $sth->execute(array(
@@ -932,6 +934,141 @@ $app->group("/federation", function () use ($app, $smarty) {
             $smarty->display('error.tpl');
         }
     });
+
+    $app->get("/cu-market-profile/edit/:id", function ($id) use ($app, $smarty) {
+        $profileId = $id;
+        $db = getDbHandler();
+
+            // 1. Get main profile data
+            $profileStmt = $db->prepare("
+            SELECT * FROM cu_market_profile
+            WHERE profile_id = :profile_id");
+            $profileStmt->execute(['profile_id' => $profileId]);
+            $profile = $profileStmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$profile) {
+                // Profile not found
+                return $app->response->write('Profile not found');
+            }
+
+            // 2. Get country profile data
+            $countryProfileStmt = $db->prepare("
+            SELECT * FROM cu_country_profile
+            WHERE profile_id = :profile_id
+        ");
+            $countryProfileStmt->execute(['profile_id' => $profileId]);
+            $countryProfile = $countryProfileStmt->fetch(PDO::FETCH_ASSOC);
+
+            // 3. Get memberships data
+            $membershipsStmt = $db->prepare("
+            SELECT * FROM cu_memberships 
+            WHERE profile_id = :profile_id
+        ");
+            $membershipsStmt->execute(['profile_id' => $profileId]);
+            $memberships = $membershipsStmt->fetch(PDO::FETCH_ASSOC);
+
+            // 4. Get individual members data
+            $individualMembersStmt = $db->prepare("
+            SELECT * FROM cu_individual_members 
+            WHERE profile_id = :profile_id
+        ");
+            $individualMembersStmt->execute(['profile_id' => $profileId]);
+            $individualMembers = $individualMembersStmt->fetch(PDO::FETCH_ASSOC);
+
+            // 5. Get assets data
+            $assetsStmt = $db->prepare("
+            SELECT * FROM cu_assets 
+            WHERE profile_id = :profile_id
+        ");
+            $assetsStmt->execute(['profile_id' => $profileId]);
+            $assets = $assetsStmt->fetch(PDO::FETCH_ASSOC);
+
+            // 6. Get financial structure data
+            $financialStructureStmt = $db->prepare("
+            SELECT * FROM cu_financial_structure 
+            WHERE profile_id = :profile_id
+        ");
+            $financialStructureStmt->execute(['profile_id' => $profileId]);
+            $financialStructure = $financialStructureStmt->fetch(PDO::FETCH_ASSOC);
+
+            // 7. Get movement manpower data
+            $movementManpowerStmt = $db->prepare("
+            SELECT * FROM cu_movement_manpower 
+            WHERE profile_id = :profile_id
+        ");
+            $movementManpowerStmt->execute(['profile_id' => $profileId]);
+            $movementManpower = $movementManpowerStmt->fetch(PDO::FETCH_ASSOC);
+
+            // 8. Get federation info data
+            $federationInfoStmt = $db->prepare("
+            SELECT * FROM cu_federation_info 
+            WHERE profile_id = :profile_id
+        ");
+            $federationInfoStmt->execute(['profile_id' => $profileId]);
+            $federationInfo = $federationInfoStmt->fetch(PDO::FETCH_ASSOC);
+
+            // 9. Get financial performance data
+            $financialPerformanceStmt = $db->prepare("
+            SELECT * FROM cu_financial_performance 
+            WHERE profile_id = :profile_id
+        ");
+            $financialPerformanceStmt->execute(['profile_id' => $profileId]);
+            $financialPerformance = $financialPerformanceStmt->fetch(PDO::FETCH_ASSOC);
+
+            // 10. Get business operations data
+            $businessOperationsStmt = $db->prepare("
+            SELECT * FROM cu_business_operations 
+            WHERE profile_id = :profile_id
+        ");
+            $businessOperationsStmt->execute(['profile_id' => $profileId]);
+            $businessOperations = $businessOperationsStmt->fetch(PDO::FETCH_ASSOC);
+
+            // 11. Get board members data (multiple records)
+            $boardMembersStmt = $db->prepare("
+            SELECT * FROM cu_board_members 
+            WHERE profile_id = :profile_id 
+            ORDER BY member_number ASC
+        ");
+            $boardMembersStmt->execute(['profile_id' => $profileId]);
+            $boardMembers = $boardMembersStmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // 12. Get federation manpower data
+            $federationManpowerStmt = $db->prepare("
+            SELECT * FROM cu_federation_manpower 
+            WHERE profile_id = :profile_id
+        ");
+            $federationManpowerStmt->execute(['profile_id' => $profileId]);
+            $federationManpower = $federationManpowerStmt->fetch(PDO::FETCH_ASSOC);
+
+            // 13. Get regulator data
+            $regulatorStmt = $db->prepare("
+            SELECT * FROM cu_regulator 
+            WHERE profile_id = :profile_id
+        ");
+            $regulatorStmt->execute(['profile_id' => $profileId]);
+            $regulator = $regulatorStmt->fetch(PDO::FETCH_ASSOC);
+
+            // Prepare data for Smarty template
+
+            $smarty->assign('profile', $profile);
+            $smarty->assign("country_profile", $countryProfile);
+
+            $smarty->assign('memberships', $memberships ?: []);
+            $smarty->assign('individual_members', $individualMembers ?: []);
+            $smarty->assign('assets', $assets ?: []);
+            $smarty->assign('financial_structure', $financialStructure ?: []);
+            $smarty->assign('movement_manpower', $movementManpower ?: []);
+            $smarty->assign('federation_info', $federationInfo ?: []);
+            $smarty->assign('financial_performance', $financialPerformance ?: []);
+            $smarty->assign('business_operations', $businessOperations ?: []);
+            $smarty->assign('board_members', $boardMembers ?: []);
+            $smarty->assign('federation_manpower', $federationManpower ?: []);
+            $smarty->assign('regulator', $regulator ?: []);
+
+            // Render Smarty template
+            $smarty->display("federation/profile_edit.tpl");
+    });
+
     /**
      * Additional helper endpoint to view saved profile
      */

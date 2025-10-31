@@ -30,7 +30,7 @@
 		            <li><a href="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/federation/chapter">Chapter</a></li>
 		            <li><a href="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/admin/users">Users</a></li>
 		            <li class="divider"></li>
-					  <li><a href="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/federation/cu-market-profile/new">Profile</a></li>
+					  <li><a href="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/federation/cu-market-profile/list/{$user_federation_id}">Profile</a></li>
 					  <li class="divider"></li>
 		            <li><a href="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/admin/unlock">Unlock Requests</a></li>
 		             <li class="divider"></li>
