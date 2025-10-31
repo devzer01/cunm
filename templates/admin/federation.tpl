@@ -34,7 +34,7 @@
 		{foreach from=$federations item=federation}
 			<tr>
 				<td>{$federation.country_name}</td>
-				<td>{$federation.name}</td>
+				<td><a href="/federation/cu-market-profile/list/{$federation.id}">{$federation.name}</a></td>
 				<td>{$federation.pucount}</td>
 			</tr>
 		{/foreach}

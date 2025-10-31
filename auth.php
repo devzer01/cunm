@@ -873,6 +873,65 @@ $app->group("/federation", function () use ($app, $smarty) {
         }
     });
 
+    $app->get("/cu-market-profile/list/:id", function ($id) use ($app, $smarty){
+        $federationId = $id;
+
+        try {
+            // Get database connection
+            $db = getDbHandler(); // or however you access your DB in your app
+
+            // Query to get all profiles for this federation
+            $stmt = $db->prepare("
+            SELECT 
+                p.profile_id,
+                p.organization_name,
+                p.email,
+                p.telephone,
+                p.submission_date,
+                p.respondent_name,
+                p.created_at,
+                cp.population_2024,
+                cp.local_currency,
+                fi.fed_name,
+                fi.total_member_cus,
+                fi.ind_member_total
+            FROM cu_market_profile p
+            LEFT JOIN cu_country_profile cp ON p.profile_id = cp.profile_id
+            LEFT JOIN cu_federation_info fi ON p.profile_id = fi.profile_id
+            WHERE p.federation_id = :federation_id
+            ORDER BY p.created_at DESC
+        ");
+
+            $stmt->execute(['federation_id' => $federationId]);
+            $profiles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // Get federation name for display
+            $federationStmt = $db->prepare("
+            SELECT name 
+            FROM federation
+            WHERE id = :federation_id
+        ");
+            $federationStmt->execute(['federation_id' => $federationId]);
+            $federation = $federationStmt->fetch(PDO::FETCH_ASSOC);
+
+            // Assign data to Smarty
+            $smarty->assign('profiles', $profiles);
+            $smarty->assign('federation_id', $federationId);
+            $smarty->assign('federation_name', $federation['name']);
+            $smarty->assign('total_profiles', count($profiles));
+
+            // Render the template
+            $smarty->display('federation/profile_list.tpl');
+
+        } catch (PDOException $e) {
+            // Log error
+            error_log("Database error in cu-market-profile/list: " . $e->getMessage());
+
+            // Display error page
+            $smarty->assign('error_message', 'An error occurred while retrieving profiles');
+            $smarty->display('error.tpl');
+        }
+    });
     /**
      * Additional helper endpoint to view saved profile
      */
@@ -1163,7 +1222,11 @@ $app->group("/admin", function () use ($app, $smarty) {
 	
 		$db = getDbHandler();
 		
-		$sql = "SELECT f.id, f.name, c.name AS country_name, COUNT(pu.id) AS pucount FROM federation AS f JOIN country AS c ON c.id = f.country_id LEFT JOIN primary_union AS pu ON pu.federation_id = f.id GROUP BY f.id ORDER BY f.name ";
+		$sql = "SELECT f.id, f.name, c.name AS country_name, COUNT(pu.id) AS pucount " .
+        "FROM federation AS f JOIN country AS c ON c.id = f.country_id " .
+            "LEFT JOIN primary_union AS pu ON pu.federation_id = f.id " .
+            "GROUP BY f.id ORDER BY f.name ";
+
 		$sth = $db->prepare($sql);
 		$sth->execute();
 		$federations = $sth->fetchAll();
