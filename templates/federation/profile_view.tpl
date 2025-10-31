@@ -1,5 +1,4 @@
 {include file="headerv2.tpl"}
-{debug}
 <div class="container">
     <h1>Credit Union Market Profile (Regular & Affiliate Member)</h1>
     <p class="subtitle">As of December 31, 2025</p>
