@@ -11,11 +11,7 @@
                 </div>
                 
                 <h1 class="error-title">
-                    {if $error_title}
-                        {$error_title}
-                    {else}
                         Oops! Something went wrong
-                    {/if}
                 </h1>
                 
                 <div class="error-message">
@@ -25,22 +21,7 @@
                         <p>We encountered an unexpected error while processing your request. Please try again later.</p>
                     {/if}
                 </div>
-                
-                {if $error_code}
-                <div class="error-code">
-                    <strong>Error Code:</strong> {$error_code}
-                </div>
-                {/if}
-                
-                {if $error_details}
-                <div class="error-details">
-                    <details>
-                        <summary>Technical Details</summary>
-                        <pre>{$error_details}</pre>
-                    </details>
-                </div>
-                {/if}
-                
+
                 <div class="error-actions">
                     <a href="javascript:history.back()" class="btn btn-secondary">
                         <i class="icon-back"></i> Go Back
@@ -48,11 +29,6 @@
                     <a href="/federation/dashboard" class="btn btn-primary">
                         <i class="icon-home"></i> Go to Dashboard
                     </a>
-                    {if $retry_url}
-                    <a href="{$retry_url}" class="btn btn-success">
-                        <i class="icon-retry"></i> Try Again
-                    </a>
-                    {/if}
                 </div>
                 
                 <div class="error-help">
