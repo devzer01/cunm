@@ -51,6 +51,8 @@
 		            <li><a href="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/admin/country">Country List</a></li>
 		            <li><a href="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/admin/federation">Federation List</a></li>
 		            <li><a href="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/admin/users">User List</a></li>
+					  <li class="divider"></li>
+					  <li><a href="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/market_profile">Market Profile</a></li>
 		             <li class="divider"></li>
 			            <li><a href="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/report/">Report</a></li>
 		          </ul>

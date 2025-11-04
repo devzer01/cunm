@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="utf8">
+	<head>
+	<title>CUNM - {$page_title|default:'Market Profile'}</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<!-- Bootstrap -->
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet" media="screen">
+	<link href="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/css/cunm.css" rel='stylesheet' media='screen' />
+
+	<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script type="text/javascript" >
+	    if(typeof String.prototype.trim !== 'function') {
+  			String.prototype.trim = function() {
+    			return this.replace(/^\s+|\s+$/g, '');
+  			}
+	    }
+	</script>
+
+	<script src="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/js/js/highcharts.js"></script>
+	<script src="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/js/js/modules/data.js"></script>
+	<script src="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/js/js/modules/exporting.js"></script>
+
+	<script src="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/js/jquery.stickytableheaders.min.js"></script>
+	<script src="//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/js/jquery.number.min.js"></script>
+	<style>
+
+	th
+	{
+    padding: 5px; /* NOTE: th padding must be set explicitly in order to support IE */
+    text-align: center;
+    font-weight:bold;
+    line-height: 2em;
+    color: #FFF;
+    background-color: #555;
+	}
+
+	td
+	{
+		text-align: center;
+	}
+
+	table tr:hover
+	{
+		background-color:#f2e8da;
+	}
+
+	body {
+		color: #341F1F;
+	}
+
+	nav.navbar.navbar-default ul.nav.navbar-nav li a {
+		color: #341F1F;
+	}
+
+	p.navbar-text.navbar-right
+	{
+		color: #341F1F;
+	}
+
+	p.navbar-text.navbar-right a.navbar-link
+	{
+		color: #341F1F;
+	}
+
+	li.dropdown.open a.dropdown-toggle:focus {
+    	background-color: #91af1e;
+	}
+
+	li.dropdown.open a.dropdown-toggle:hover {
+    	background-color: #91af1e;
+	}
+
+	li.dropdown.open a.dropdown-toggle {
+    	background-color: #91af1e;
+	}
+
+	ul.dropdown-menu {
+		background-color: #91af1e;
+		color: #341F1F;
+	}
+
+	ul.dropdown-menu li a:focus {
+		background-color: #007bb6;
+		color: #341F1F;
+	}
+
+	ul.dropdown-menu li a:hover {
+		background-color: #007bb6;
+		color: #341F1F;
+	}
+
+	.navbar
+	{
+		background-color: #007bb6;
+		color: #341F1F;
+	}
+
+
+	</style>
+
+	{block name=head}{/block}
+
+	</head>
+	<body>
+
+	{include file='menu.tpl'}
+
+	<div class="container-fluid" style="padding: 20px;">
+		{if $error}
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>Error!</strong> {$error}
+			</div>
+		{/if}
+
+		{if $success}
+			<div class="alert alert-success alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>Success!</strong> {$success}
+			</div>
+		{/if}
+
+		{block name=content}{/block}
+	</div>
+
+	<script type='text/javascript'>
+		$(function () {
+			$( ".datepicker" ).datepicker( { dateFormat: "yy-mm-dd", changeMonth: true, changeYear: true } );
+		});
+	</script>
+
+	<footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid #ddd;">
+		Copyright Asian Confederations of Credit Union 2015-{$smarty.now|date_format:'%Y'}. All Rights Reserved
+	</footer>
+
+	</body>
+</html>

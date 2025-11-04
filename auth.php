@@ -1223,6 +1223,9 @@ $app->group("/ajax", function () use ($app, $smarty) {
 	require_once 'controller/ajax.php';
 });
 
+// Market Profile 2025 routes
+require_once 'controller/market_profile.php';
+
 $app->group("/admin", function () use ($app, $smarty) {
 	
 	
