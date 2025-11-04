@@ -19,36 +19,36 @@
                     <tr>
                         <th rowspan="2">Country</th>
                         <th rowspan="2">Federation</th>
-                        <th colspan="7" class="text-center" style="background-color: #d9edf7;">Urban CUs</th>
-                        <th colspan="7" class="text-center" style="background-color: #dff0d8;">Rural CUs</th>
-                        <th colspan="7" class="text-center" style="background-color: #fcf8e3;">Total</th>
+                        <th colspan="7" class="text-center" style="background-color: #d9edf7; color: #000;">Urban CUs</th>
+                        <th colspan="7" class="text-center" style="background-color: #dff0d8; color: #000;">Rural CUs</th>
+                        <th colspan="7" class="text-center" style="background-color: #fcf8e3; color: #000;">Total</th>
                         <th rowspan="2">CUMI</th>
                     </tr>
                     <tr>
                         <!-- Urban -->
-                        <th style="background-color: #d9edf7;">CUs</th>
-                        <th style="background-color: #d9edf7;">Members</th>
-                        <th style="background-color: #d9edf7;">&lt;300</th>
-                        <th style="background-color: #d9edf7;">301-1K</th>
-                        <th style="background-color: #d9edf7;">1K-3K</th>
-                        <th style="background-color: #d9edf7;">3K-5K</th>
-                        <th style="background-color: #d9edf7;">&gt;5K</th>
+                        <th style="background-color: #d9edf7; color: #000;">CUs</th>
+                        <th style="background-color: #d9edf7; color: #000;">Members</th>
+                        <th style="background-color: #d9edf7; color: #000;">&lt;300</th>
+                        <th style="background-color: #d9edf7; color: #000;">301-1K</th>
+                        <th style="background-color: #d9edf7; color: #000;">1K-3K</th>
+                        <th style="background-color: #d9edf7; color: #000;">3K-5K</th>
+                        <th style="background-color: #d9edf7; color: #000;">&gt;5K</th>
                         <!-- Rural -->
-                        <th style="background-color: #dff0d8;">CUs</th>
-                        <th style="background-color: #dff0d8;">Members</th>
-                        <th style="background-color: #dff0d8;">&lt;300</th>
-                        <th style="background-color: #dff0d8;">301-1K</th>
-                        <th style="background-color: #dff0d8;">1K-3K</th>
-                        <th style="background-color: #dff0d8;">3K-5K</th>
-                        <th style="background-color: #dff0d8;">&gt;5K</th>
+                        <th style="background-color: #dff0d8; color: #000;">CUs</th>
+                        <th style="background-color: #dff0d8; color: #000;">Members</th>
+                        <th style="background-color: #dff0d8; color: #000;">&lt;300</th>
+                        <th style="background-color: #dff0d8; color: #000;">301-1K</th>
+                        <th style="background-color: #dff0d8; color: #000;">1K-3K</th>
+                        <th style="background-color: #dff0d8; color: #000;">3K-5K</th>
+                        <th style="background-color: #dff0d8; color: #000;">&gt;5K</th>
                         <!-- Total -->
-                        <th style="background-color: #fcf8e3;">CUs</th>
-                        <th style="background-color: #fcf8e3;">Members</th>
-                        <th style="background-color: #fcf8e3;">&lt;300</th>
-                        <th style="background-color: #fcf8e3;">301-1K</th>
-                        <th style="background-color: #fcf8e3;">1K-3K</th>
-                        <th style="background-color: #fcf8e3;">3K-5K</th>
-                        <th style="background-color: #fcf8e3;">&gt;5K</th>
+                        <th style="background-color: #fcf8e3; color: #000;">CUs</th>
+                        <th style="background-color: #fcf8e3; color: #000;">Members</th>
+                        <th style="background-color: #fcf8e3; color: #000;">&lt;300</th>
+                        <th style="background-color: #fcf8e3; color: #000;">301-1K</th>
+                        <th style="background-color: #fcf8e3; color: #000;">1K-3K</th>
+                        <th style="background-color: #fcf8e3; color: #000;">3K-5K</th>
+                        <th style="background-color: #fcf8e3; color: #000;">&gt;5K</th>
                     </tr>
                 </thead>
                 <tbody>

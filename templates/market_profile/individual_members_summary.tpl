@@ -19,35 +19,35 @@
                     <tr>
                         <th rowspan="2">Country</th>
                         <th rowspan="2">Federation</th>
-                        <th colspan="7" class="text-center" style="background-color: #d9edf7;">Urban Members</th>
-                        <th colspan="7" class="text-center" style="background-color: #dff0d8;">Rural Members</th>
-                        <th colspan="7" class="text-center" style="background-color: #fcf8e3;">Total</th>
+                        <th colspan="7" class="text-center" style="background-color: #d9edf7; color: #000;">Urban Members</th>
+                        <th colspan="7" class="text-center" style="background-color: #dff0d8; color: #000;">Rural Members</th>
+                        <th colspan="7" class="text-center" style="background-color: #fcf8e3; color: #000;">Total</th>
                     </tr>
                     <tr>
                         <!-- Urban -->
-                        <th style="background-color: #d9edf7;">Total</th>
-                        <th style="background-color: #d9edf7;">Male</th>
-                        <th style="background-color: #d9edf7;">Female</th>
-                        <th style="background-color: #d9edf7;">&lt;20</th>
-                        <th style="background-color: #d9edf7;">20-40</th>
-                        <th style="background-color: #d9edf7;">40-60</th>
-                        <th style="background-color: #d9edf7;">&gt;60</th>
+                        <th style="background-color: #d9edf7; color: #000;">Total</th>
+                        <th style="background-color: #d9edf7; color: #000;">Male</th>
+                        <th style="background-color: #d9edf7; color: #000;">Female</th>
+                        <th style="background-color: #d9edf7; color: #000;">&lt;20</th>
+                        <th style="background-color: #d9edf7; color: #000;">20-40</th>
+                        <th style="background-color: #d9edf7; color: #000;">40-60</th>
+                        <th style="background-color: #d9edf7; color: #000;">&gt;60</th>
                         <!-- Rural -->
-                        <th style="background-color: #dff0d8;">Total</th>
-                        <th style="background-color: #dff0d8;">Male</th>
-                        <th style="background-color: #dff0d8;">Female</th>
-                        <th style="background-color: #dff0d8;">&lt;20</th>
-                        <th style="background-color: #dff0d8;">20-40</th>
-                        <th style="background-color: #dff0d8;">40-60</th>
-                        <th style="background-color: #dff0d8;">&gt;60</th>
+                        <th style="background-color: #dff0d8; color: #000;">Total</th>
+                        <th style="background-color: #dff0d8; color: #000;">Male</th>
+                        <th style="background-color: #dff0d8; color: #000;">Female</th>
+                        <th style="background-color: #dff0d8; color: #000;">&lt;20</th>
+                        <th style="background-color: #dff0d8; color: #000;">20-40</th>
+                        <th style="background-color: #dff0d8; color: #000;">40-60</th>
+                        <th style="background-color: #dff0d8; color: #000;">&gt;60</th>
                         <!-- Total -->
-                        <th style="background-color: #fcf8e3;">Total</th>
-                        <th style="background-color: #fcf8e3;">Male</th>
-                        <th style="background-color: #fcf8e3;">Female</th>
-                        <th style="background-color: #fcf8e3;">&lt;20</th>
-                        <th style="background-color: #fcf8e3;">20-40</th>
-                        <th style="background-color: #fcf8e3;">40-60</th>
-                        <th style="background-color: #fcf8e3;">&gt;60</th>
+                        <th style="background-color: #fcf8e3; color: #000;">Total</th>
+                        <th style="background-color: #fcf8e3; color: #000;">Male</th>
+                        <th style="background-color: #fcf8e3; color: #000;">Female</th>
+                        <th style="background-color: #fcf8e3; color: #000;">&lt;20</th>
+                        <th style="background-color: #fcf8e3; color: #000;">20-40</th>
+                        <th style="background-color: #fcf8e3; color: #000;">40-60</th>
+                        <th style="background-color: #fcf8e3; color: #000;">&gt;60</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -128,13 +128,13 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="well text-center" style="background-color: #d9edf7;">
+                    <div class="well text-center" style="background-color: #d9edf7; color: #000;">
                         <h3>{$totals.total_male|number_format:0}</h3>
                         <p>Male ({(($totals.total_male / $totals.total_ind_members) * 100)|number_format:1}%)</p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="well text-center" style="background-color: #f9d5e5;">
+                    <div class="well text-center" style="background-color: #f9d5e5; color: #000;">
                         <h3>{$totals.total_female|number_format:0}</h3>
                         <p>Female ({(($totals.total_female / $totals.total_ind_members) * 100)|number_format:1}%)</p>
                     </div>

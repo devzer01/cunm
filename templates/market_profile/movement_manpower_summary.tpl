@@ -19,20 +19,20 @@
                     <tr>
                         <th rowspan="2">Country</th>
                         <th rowspan="2">Federation</th>
-                        <th colspan="3" class="text-center" style="background-color: #d9edf7;">Elected Officers</th>
-                        <th colspan="3" class="text-center" style="background-color: #dff0d8;">Senior Managers</th>
-                        <th colspan="3" class="text-center" style="background-color: #fcf8e3;">Staff</th>
+                        <th colspan="3" class="text-center" style="background-color: #d9edf7; color: #000;">Elected Officers</th>
+                        <th colspan="3" class="text-center" style="background-color: #dff0d8; color: #000;">Senior Managers</th>
+                        <th colspan="3" class="text-center" style="background-color: #fcf8e3; color: #000;">Staff</th>
                     </tr>
                     <tr>
-                        <th style="background-color: #d9edf7;">Male</th>
-                        <th style="background-color: #d9edf7;">Female</th>
-                        <th style="background-color: #d9edf7;">Total</th>
-                        <th style="background-color: #dff0d8;">Male</th>
-                        <th style="background-color: #dff0d8;">Female</th>
-                        <th style="background-color: #dff0d8;">Total</th>
-                        <th style="background-color: #fcf8e3;">Male</th>
-                        <th style="background-color: #fcf8e3;">Female</th>
-                        <th style="background-color: #fcf8e3;">Total</th>
+                        <th style="background-color: #d9edf7; color: #000;">Male</th>
+                        <th style="background-color: #d9edf7; color: #000;">Female</th>
+                        <th style="background-color: #d9edf7; color: #000;">Total</th>
+                        <th style="background-color: #dff0d8; color: #000;">Male</th>
+                        <th style="background-color: #dff0d8; color: #000;">Female</th>
+                        <th style="background-color: #dff0d8; color: #000;">Total</th>
+                        <th style="background-color: #fcf8e3; color: #000;">Male</th>
+                        <th style="background-color: #fcf8e3; color: #000;">Female</th>
+                        <th style="background-color: #fcf8e3; color: #000;">Total</th>
                     </tr>
                 </thead>
                 <tbody>

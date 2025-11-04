@@ -20,29 +20,29 @@
                         <th rowspan="2">Country</th>
                         <th rowspan="2">Currency</th>
                         <th rowspan="2">Federation</th>
-                        <th colspan="5" class="text-center" style="background-color: #d9edf7;">Urban</th>
-                        <th colspan="5" class="text-center" style="background-color: #dff0d8;">Rural</th>
-                        <th colspan="5" class="text-center" style="background-color: #fcf8e3;">Total</th>
+                        <th colspan="5" class="text-center" style="background-color: #d9edf7; color: #000;">Urban</th>
+                        <th colspan="5" class="text-center" style="background-color: #dff0d8; color: #000;">Rural</th>
+                        <th colspan="5" class="text-center" style="background-color: #fcf8e3; color: #000;">Total</th>
                     </tr>
                     <tr>
                         <!-- Urban -->
-                        <th style="background-color: #d9edf7;">Total</th>
-                        <th style="background-color: #d9edf7;">&lt;100K</th>
-                        <th style="background-color: #d9edf7;">100K-500K</th>
-                        <th style="background-color: #d9edf7;">500K-1M</th>
-                        <th style="background-color: #d9edf7;">&gt;1M</th>
+                        <th style="background-color: #d9edf7; color: #000;">Total</th>
+                        <th style="background-color: #d9edf7; color: #000;">&lt;100K</th>
+                        <th style="background-color: #d9edf7; color: #000;">100K-500K</th>
+                        <th style="background-color: #d9edf7; color: #000;">500K-1M</th>
+                        <th style="background-color: #d9edf7; color: #000;">&gt;1M</th>
                         <!-- Rural -->
-                        <th style="background-color: #dff0d8;">Total</th>
-                        <th style="background-color: #dff0d8;">&lt;100K</th>
-                        <th style="background-color: #dff0d8;">100K-500K</th>
-                        <th style="background-color: #dff0d8;">500K-1M</th>
-                        <th style="background-color: #dff0d8;">&gt;1M</th>
+                        <th style="background-color: #dff0d8; color: #000;">Total</th>
+                        <th style="background-color: #dff0d8; color: #000;">&lt;100K</th>
+                        <th style="background-color: #dff0d8; color: #000;">100K-500K</th>
+                        <th style="background-color: #dff0d8; color: #000;">500K-1M</th>
+                        <th style="background-color: #dff0d8; color: #000;">&gt;1M</th>
                         <!-- Total -->
-                        <th style="background-color: #fcf8e3;">Total</th>
-                        <th style="background-color: #fcf8e3;">&lt;100K</th>
-                        <th style="background-color: #fcf8e3;">100K-500K</th>
-                        <th style="background-color: #fcf8e3;">500K-1M</th>
-                        <th style="background-color: #fcf8e3;">&gt;1M</th>
+                        <th style="background-color: #fcf8e3; color: #000;">Total</th>
+                        <th style="background-color: #fcf8e3; color: #000;">&lt;100K</th>
+                        <th style="background-color: #fcf8e3; color: #000;">100K-500K</th>
+                        <th style="background-color: #fcf8e3; color: #000;">500K-1M</th>
+                        <th style="background-color: #fcf8e3; color: #000;">&gt;1M</th>
                     </tr>
                 </thead>
                 <tbody>

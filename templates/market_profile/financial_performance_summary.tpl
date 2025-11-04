@@ -20,24 +20,24 @@
                         <th rowspan="2">Country</th>
                         <th rowspan="2">Currency</th>
                         <th rowspan="2">Federation</th>
-                        <th colspan="3" class="text-center" style="background-color: #d9edf7;">Assets</th>
-                        <th colspan="3" class="text-center" style="background-color: #dff0d8;">Loans Outstanding</th>
-                        <th colspan="3" class="text-center" style="background-color: #fcf8e3;">Share Capital</th>
-                        <th colspan="3" class="text-center" style="background-color: #f2dede;">NPL</th>
+                        <th colspan="3" class="text-center" style="background-color: #d9edf7; color: #000;">Assets</th>
+                        <th colspan="3" class="text-center" style="background-color: #dff0d8; color: #000;">Loans Outstanding</th>
+                        <th colspan="3" class="text-center" style="background-color: #fcf8e3; color: #000;">Share Capital</th>
+                        <th colspan="3" class="text-center" style="background-color: #f2dede; color: #000;">NPL</th>
                     </tr>
                     <tr>
-                        <th style="background-color: #d9edf7;">2024</th>
-                        <th style="background-color: #d9edf7;">2025</th>
-                        <th style="background-color: #d9edf7;">% Δ</th>
-                        <th style="background-color: #dff0d8;">2024</th>
-                        <th style="background-color: #dff0d8;">2025</th>
-                        <th style="background-color: #dff0d8;">% Δ</th>
-                        <th style="background-color: #fcf8e3;">2024</th>
-                        <th style="background-color: #fcf8e3;">2025</th>
-                        <th style="background-color: #fcf8e3;">% Δ</th>
-                        <th style="background-color: #f2dede;">2024</th>
-                        <th style="background-color: #f2dede;">2025</th>
-                        <th style="background-color: #f2dede;">% Δ</th>
+                        <th style="background-color: #d9edf7; color: #000;">2024</th>
+                        <th style="background-color: #d9edf7; color: #000;">2025</th>
+                        <th style="background-color: #d9edf7; color: #000;">% Δ</th>
+                        <th style="background-color: #dff0d8; color: #000;">2024</th>
+                        <th style="background-color: #dff0d8; color: #000;">2025</th>
+                        <th style="background-color: #dff0d8; color: #000;">% Δ</th>
+                        <th style="background-color: #fcf8e3; color: #000;">2024</th>
+                        <th style="background-color: #fcf8e3; color: #000;">2025</th>
+                        <th style="background-color: #fcf8e3; color: #000;">% Δ</th>
+                        <th style="background-color: #f2dede; color: #000;">2024</th>
+                        <th style="background-color: #f2dede; color: #000;">2025</th>
+                        <th style="background-color: #f2dede; color: #000;">% Δ</th>
                     </tr>
                 </thead>
                 <tbody>
