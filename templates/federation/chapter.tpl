@@ -18,15 +18,18 @@
 		<thead>
 		<tr>
 			<th>Name</th>
-			<th>...</th>
+			<th>Actions</th>
 		</tr>
 		</thead>
-		
+
 		<tbody>
 		{foreach from=$chapters item=chapter}
 			<tr>
 				<td>{$chapter.name}</td>
-				<td>&nbsp;</td>
+				<td>
+					<a href='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/federation/chapter/edit/{$chapter.id}' class='btn btn-sm btn-primary'>Edit</a>
+					<a href='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/federation/chapter/delete/{$chapter.id}' class='btn btn-sm btn-danger' onclick='return confirm("Are you sure you want to delete this Region/Chapter?");'>Delete</a>
+				</td>
 			</tr>
 		{/foreach}
 		</tbody>

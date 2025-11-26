@@ -46,7 +46,6 @@ $app->post('/login', function () use ($app, $smarty) {
 	$sql = "SELECT id, email, level, federation_id, country_id, primary_union_id FROM user WHERE email = :username AND password = PASSWORD(:password) AND status = 1";
 	$sth = $pdo->prepare($sql);
 	$sth->execute(array(':username' => $_POST['username'], ':password' => $_POST['password']));
-	
 	if ($sth->rowCount() == 0) {
 		
 		setErrorMessage("Invalid Username or Password");

@@ -249,18 +249,91 @@ $app->group("/federation", function () use ($app, $smarty) {
 	});
 	
 	$app->post("/primarycu", function () use ($app, $smarty) {
-		
+
 		$db = getDbHandler();
 		$sql = "INSERT INTO primary_union (federation_id, chapter_id, name) VALUES (:federation_id, :chapter_id, :name) ";
 		$sth = $db->prepare($sql);
 		$sth->execute(array(':federation_id' => $_POST['federation_id'], ':chapter_id' => $_POST['chapter_id'], ':name' => $_POST['name']));
-		
+
 		setSuccessMessage('Primary Credit Union Added');
-		
+
 		$app->redirect(APP_PATH . '/federation/primarycu');
-		
+
 	});
-	
+
+	$app->get("/primarycu/edit/:id", function ($id) use ($app, $smarty) {
+
+		$db = getDbHandler();
+
+		// Get the primary union and verify it belongs to the user's federation
+		$sql = "SELECT id, federation_id, chapter_id, name FROM primary_union WHERE id = :id AND federation_id = :federation_id";
+		$sth = $db->prepare($sql);
+		$sth->execute(array(':id' => $id, ':federation_id' => $_SESSION['user_federation_id']));
+
+		$primarycu = $sth->fetch();
+
+		if (!$primarycu) {
+			setErrorMessage('Primary Credit Union not found or access denied');
+			$app->redirect(APP_PATH . '/federation/primarycu');
+			return;
+		}
+
+		$smarty->assign('primarycu', $primarycu);
+
+		// Get chapters for dropdown
+		$sql = "SELECT id, federation_id, name FROM chapter WHERE federation_id = :federation_id";
+		$sth = $db->prepare($sql);
+		$sth->execute(array(':federation_id' => $_SESSION['user_federation_id']));
+		$chapters = $sth->fetchAll();
+		$smarty->assign('chapters', $chapters);
+
+		$smarty->display('federation/primarycu_edit.tpl');
+	});
+
+	$app->post("/primarycu/edit/:id", function ($id) use ($app, $smarty) {
+
+		$db = getDbHandler();
+
+		// Verify ownership before updating
+		$sql = "UPDATE primary_union SET name = :name, chapter_id = :chapter_id WHERE id = :id AND federation_id = :federation_id";
+		$sth = $db->prepare($sql);
+		$sth->execute(array(
+			':name' => $_POST['name'],
+			':chapter_id' => $_POST['chapter_id'],
+			':id' => $id,
+			':federation_id' => $_SESSION['user_federation_id']
+		));
+
+		if ($sth->rowCount() > 0) {
+			setSuccessMessage('Primary Credit Union Updated');
+		} else {
+			setErrorMessage('Primary Credit Union not found or access denied');
+		}
+
+		$app->redirect(APP_PATH . '/federation/primarycu');
+	});
+
+	$app->get("/primarycu/delete/:id", function ($id) use ($app, $smarty) {
+
+		$db = getDbHandler();
+
+		// Verify ownership before deleting
+		$sql = "DELETE FROM primary_union WHERE id = :id AND federation_id = :federation_id";
+		$sth = $db->prepare($sql);
+		$sth->execute(array(
+			':id' => $id,
+			':federation_id' => $_SESSION['user_federation_id']
+		));
+
+		if ($sth->rowCount() > 0) {
+			setSuccessMessage('Primary Credit Union Deleted');
+		} else {
+			setErrorMessage('Primary Credit Union not found or access denied');
+		}
+
+		$app->redirect(APP_PATH . '/federation/primarycu');
+	});
+
 	$app->get("/chapter", function () use ($app, $smarty) {
 	
 		$db = getDbHandler();
@@ -287,9 +360,84 @@ $app->group("/federation", function () use ($app, $smarty) {
 
 	});
 
+	$app->get("/chapter/edit/:id", function ($id) use ($app, $smarty) {
+
+		$db = getDbHandler();
+
+		// Get the chapter and verify it belongs to the user's federation
+		$sql = "SELECT id, federation_id, name FROM chapter WHERE id = :id AND federation_id = :federation_id";
+		$sth = $db->prepare($sql);
+		$sth->execute(array(':id' => $id, ':federation_id' => $_SESSION['user_federation_id']));
+
+		$chapter = $sth->fetch();
+
+		if (!$chapter) {
+			setErrorMessage('Region/Chapter not found or access denied');
+			$app->redirect(APP_PATH . '/federation/chapter');
+			return;
+		}
+
+		$smarty->assign('chapter', $chapter);
+		$smarty->display('federation/chapter_edit.tpl');
+	});
+
+	$app->post("/chapter/edit/:id", function ($id) use ($app, $smarty) {
+
+		$db = getDbHandler();
+
+		// Verify ownership before updating
+		$sql = "UPDATE chapter SET name = :name WHERE id = :id AND federation_id = :federation_id";
+		$sth = $db->prepare($sql);
+		$sth->execute(array(
+			':name' => $_POST['name'],
+			':id' => $id,
+			':federation_id' => $_SESSION['user_federation_id']
+		));
+
+		if ($sth->rowCount() > 0) {
+			setSuccessMessage('Region/Chapter Updated');
+		} else {
+			setErrorMessage('Region/Chapter not found or access denied');
+		}
+
+		$app->redirect(APP_PATH . '/federation/chapter');
+	});
+
+	$app->get("/chapter/delete/:id", function ($id) use ($app, $smarty) {
+
+		$db = getDbHandler();
+
+		// Verify ownership before deleting
+		$sql = "DELETE FROM chapter WHERE id = :id AND federation_id = :federation_id";
+		$sth = $db->prepare($sql);
+		$sth->execute(array(
+			':id' => $id,
+			':federation_id' => $_SESSION['user_federation_id']
+		));
+
+		if ($sth->rowCount() > 0) {
+			setSuccessMessage('Region/Chapter Deleted');
+		} else {
+			setErrorMessage('Region/Chapter not found or access denied');
+		}
+
+		$app->redirect(APP_PATH . '/federation/chapter');
+	});
+
     $app->get("/cu-market-profile/new", function () use ($app, $smarty){
         $smarty->display("federation/cu_market_profile_form.tpl");
     });
+
+    $app->get("/cu-market-profile/create/:id", function ($id) use ($app, $smarty){
+        // Verify the federation_id matches the user's federation
+        if ($id != $_SESSION['user_federation_id']) {
+            setErrorMessage('Access denied');
+            $app->redirect(APP_PATH . '/dashboard');
+            return;
+        }
+        $smarty->display("federation/cu_market_profile_form.tpl");
+    });
+
     /**
      * Credit Union Market Profile Form - Save Endpoint
      * Slim Framework Controller Action

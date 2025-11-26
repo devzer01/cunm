@@ -27,15 +27,18 @@
 		<thead>
 		<tr>
 			<th>Name</th>
-			<th>...</th>
+			<th>Actions</th>
 		</tr>
 		</thead>
-		
+
 		<tbody>
 		{foreach from=$primarycus item=primarycu}
 			<tr>
 				<td>{$primarycu.name}</td>
-				<td>&nbsp;</td>
+				<td>
+					<a href='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/federation/primarycu/edit/{$primarycu.id}' class='btn btn-sm btn-primary'>Edit</a>
+					<a href='//{$smarty.server.HTTP_HOST}{$smarty.const.APP_PATH}/federation/primarycu/delete/{$primarycu.id}' class='btn btn-sm btn-danger' onclick='return confirm("Are you sure you want to delete this Primary Credit Union?");'>Delete</a>
+				</td>
 			</tr>
 		{/foreach}
 		</tbody>
