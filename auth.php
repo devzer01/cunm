@@ -1083,6 +1083,64 @@ $app->group("/federation", function () use ($app, $smarty) {
         }
     });
 
+    $app->get("/cu-market-profile/delete/:id", function ($id) use ($app, $smarty) {
+        $profileId = $id;
+
+        try {
+            $db = getDbHandler();
+
+            // First, get the federation_id so we can redirect back to the correct list
+            $stmt = $db->prepare("SELECT federation_id FROM cu_market_profile WHERE profile_id = :profile_id");
+            $stmt->execute(['profile_id' => $profileId]);
+            $profile = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$profile) {
+                setErrorMessage('Profile not found');
+                $app->redirect(APP_PATH . "/federation/dashboard");
+                return;
+            }
+
+            $federationId = $profile['federation_id'];
+
+            // Delete from all related tables first (child tables)
+            $childTables = [
+                'cu_country_profile',
+                'cu_memberships',
+                'cu_individual_members',
+                'cu_assets',
+                'cu_financial_structure',
+                'cu_movement_manpower',
+                'cu_federation_info',
+                'cu_financial_performance',
+                'cu_business_operations',
+                'cu_board_members',
+                'cu_federation_manpower',
+                'cu_regulator'
+            ];
+
+            foreach ($childTables as $table) {
+                $deleteStmt = $db->prepare("DELETE FROM {$table} WHERE profile_id = :profile_id");
+                $deleteStmt->execute(['profile_id' => $profileId]);
+            }
+
+            // Delete from main profile table
+            $deleteMainStmt = $db->prepare("DELETE FROM cu_market_profile WHERE profile_id = :profile_id");
+            $deleteMainStmt->execute(['profile_id' => $profileId]);
+
+            setSuccessMessage('Profile deleted successfully');
+            $app->redirect(APP_PATH . "/federation/cu-market-profile/list/" . $federationId);
+
+        } catch (PDOException $e) {
+            error_log("Database error in cu-market-profile/delete: " . $e->getMessage());
+            setErrorMessage('Error deleting profile: ' . $e->getMessage());
+            if (isset($federationId)) {
+                $app->redirect(APP_PATH . "/federation/cu-market-profile/list/" . $federationId);
+            } else {
+                $app->redirect(APP_PATH . "/federation/dashboard");
+            }
+        }
+    });
+
     $app->get("/cu-market-profile/edit/:id", function ($id) use ($app, $smarty) {
         $profileId = $id;
         $db = getDbHandler();

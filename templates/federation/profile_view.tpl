@@ -4,7 +4,7 @@
     <p class="subtitle">As of December 31, 2025</p>
 
     <div class="view-actions" style="margin-bottom: 20px; text-align: right;">
-        <a href="/federation/cu-market-profile/list" class="btn btn-secondary">Back to List</a>
+        <a href="/federation/cu-market-profile/list/{$profile.federation_id}" class="btn btn-secondary">Back to List</a>
         <a href="/federation/cu-market-profile/edit/{$profile.profile_id}" class="btn btn-primary">Edit</a>
     </div>
 
